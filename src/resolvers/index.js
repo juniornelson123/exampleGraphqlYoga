@@ -1,36 +1,18 @@
 import post, {posts} from './post'
 import order from './order'
 import axios from 'axios'
-const url = "http://localhost:"
 
-const productApi = axios.create({
-    baseURL: `${url}3001`,
-    timeout: 10000,
-    headers: { 'X-Custom-Header': 'foobar' }
-});
-
-const orderApi = axios.create({
-    baseURL: `${url}3000`,
-    timeout: 10000,
-    headers: { 'X-Custom-Header': 'foobar' }
-});
-
-const clientApi = axios.create({
-    baseURL: `${url}3002`,
-    timeout: 10000,
-    headers: { 'X-Custom-Header': 'foobar' }
-});
-
+import { productApi, orderApi, clientApi } from '../service/api'
 
 export const resolvers = {
     Query: {
         products: async (parent, args, ctx) => {
-            const products = await product.get("products")
+            const products = await productApi.get("products")
             
             return products.data
         },
         clients: async () => {
-            const clients = await client.get("clients")
+            const clients = await clientApi.get("clients")
 
             return clients.data
         },

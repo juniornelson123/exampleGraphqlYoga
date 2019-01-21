@@ -1,22 +1,6 @@
 import axios from 'axios'
-const url = "http://localhost:"
-const productApi = axios.create({
-    baseURL: `${url}3001`,
-    timeout: 10000,
-    headers: { 'X-Custom-Header': 'foobar' }
-});
 
-const orderApi = axios.create({
-    baseURL: `${url}3000`,
-    timeout: 10000,
-    headers: { 'X-Custom-Header': 'foobar' }
-});
-
-const clientApi = axios.create({
-    baseURL: `${url}3002`,
-    timeout: 10000,
-    headers: { 'X-Custom-Header': 'foobar' }
-});
+import { productApi, orderApi, clientApi } from '../service/api'
 
 export default {
     createOrder: async (parent, args) => {
