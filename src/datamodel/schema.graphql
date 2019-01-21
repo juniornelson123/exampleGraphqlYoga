@@ -1,22 +1,29 @@
 type Query {
-  items: [Item!]!
-  posts: [Post!]!
-  post(id: ID!): Post!
+  clients: [Client]!
+  products: [Product]!
+  orders: [Order]!
 }
 
 type Mutation {
-  createDraft(title: String!, content: String): Post
-  deletePost(id: ID!): Post
-  publish(id: ID!): Post
+  createOrder(value: Float, product: Int, client: Int): Order  
 }
 
-type Item {
+type Client {
+  id: Int
   name: String!
+  email: String!
 }
 
-type Post {
-  id: ID!
-  title: String!
-  content: String!
-  published: Boolean!
+type Product {
+  id: Int
+  name: String!
+  description: String!
+  price: Float!
+}
+
+type Order {
+  id: Int
+  value: Float!
+  product: Product!
+  client: Client!
 }
